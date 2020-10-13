@@ -46,9 +46,9 @@ class LazyInitDemoError {
 	private Object instance = null;
 	
 	public Object getInstance() {
-		// 当两个线程A,B同时进入此方法时， A线程先获取到当前的LazyInitDemoError对象的对象锁，然后初始化instance，A线程退出方法。
-		// 此后B线程获取到LazyInitDemoError对象的对象锁，由于instance的值来自与B线程的本地缓冲，此时instance仍然为null。
-		// 所以B线程仍然会执行初始化动作。
+		// 当线程A进入到此方法执行到创建实例，然而创建实例不是原子操作（创建对象有3个步骤：1、分配内存 2、初始化对象数据比如成员数据 3、将引用与对象内存建立连接）
+		// 创建对象的3个步骤中，如果步骤2和步骤3发生了指令重排序，就会导致对象未初始化完全。此时线程B进入方法，判断instance是否为空。此时instance并不为空，
+		// 导致线程B使用一个未完全初始化的对象，导致安全性问题。解决该问题的办法就是给instance加上violate关键字，禁止指令重排序。
 		if (instance == null) {
 			synchronized (this) {
 				if (instance == null) {
