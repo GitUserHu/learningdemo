@@ -41,7 +41,7 @@ public class TestDataNotInSameCacheLine {
  *
  */
 class TestObj2{
-	protected long p1, p2, p3, p4, p5, p6, p7;
+	protected long p1, p2, p3, p4, p5, p6, p7; // cache line padding
 	volatile long x;
-	protected long p8, p9, p10, p11, p12, p13, p14;
+	protected long p8, p9, p10, p11, p12, p13, p14; // cache line padding
 }
