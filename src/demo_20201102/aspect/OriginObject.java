@@ -1,4 +1,5 @@
-package demo_20201028;
+package demo_20201102.aspect;
+
 
 public class OriginObject implements Origin{
 	public void test() {

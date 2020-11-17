@@ -11,16 +11,18 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
         
  	<bean id="origin" class="demo_20201028.OriginObject"/>
+ 	<!-- <bean id="myFactoryBean" class="demo_20201028.MyFactoryBean"/> -->
  	<bean id="aop" class="demo_20201028.AOPDefinition"/>
  	<bean id="interceptor" class="demo_20201028.MethodInterceptorImpl"/>
- 	<aop:config>
- 		<!-- <aop:pointcut id="pc" expression="execution(* *(..))"/> -->
+ 	<bean id="myBeanPostProcessor" class="demo_20201028.MyPostProcessor"/>
+ 	<!-- <aop:config>
+ 		<aop:pointcut id="pc" expression="execution(* *(..))"/>
  		<aop:pointcut id="pc" expression="execution(* test(..))"/>
  		<aop:pointcut id="pc2" expression="execution(* nonTest(..))"/>
  		<aop:pointcut id="pc3" expression="execution(* test2(String, String))"/>
  		<aop:advisor advice-ref="interceptor" pointcut-ref="pc"/>
  		<aop:advisor advice-ref="interceptor" pointcut-ref="pc2"/>
  		<aop:advisor advice-ref="interceptor" pointcut-ref="pc3"/>
- 	</aop:config>
+ 	</aop:config> -->
  </beans>
  
